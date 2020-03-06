@@ -8,16 +8,14 @@ from ask42App.serializers import InputSerializer
 from django.core import serializers
 
 
-
 def home(request):
     return render(request, 'index.html')
 
-class InputView(ModelViewSet):
 
+class InputView(ModelViewSet):
     serializer_class = InputSerializer
     queryset = Input.objects.all()
 
+
 def second_page(request):
     return HttpResponse(serializers.serialize('json', Input.objects.all()))
-
-
